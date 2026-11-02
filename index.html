@@ -294,8 +294,9 @@ h2.title{
 .env{width:clamp(96px,26vw,124px);height:auto;transform:rotate(-4deg);stroke-width:3.2}
 .card{
   width:100%;margin-top:.8rem;text-align:left;
-  background:var(--paper);
-  border:18px solid transparent;border-image:var(--wave-card) 18 / 18px round;
+  /* Paper fills only up to the middle of the wavy line, so the painting shows outside it. */
+  background:linear-gradient(var(--paper),var(--paper)) center/calc(100% - 28px) calc(100% - 28px) no-repeat border-box;
+  border:26px solid transparent;border-image:url(img/wave-border.png) 44 / 26px round;
   padding:clamp(10px,3vw,24px);
   display:flex;flex-direction:column;gap:1.5rem;
 }
@@ -340,9 +341,9 @@ fieldset.field{border:0;margin:0;padding:0}
 @keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
 
 /* ---------- Watercolor pieces: ribbon frame, monogram, wildflower edges, butterflies ---------- */
-.ribbon{position:relative;width:min(100%,480px);aspect-ratio:704/935;
-  background:url(img/frame.webp) center/contain no-repeat;
-  display:flex;align-items:center;justify-content:center;padding:24% 19% 14%}
+.ribbon{position:relative;width:min(100%,440px);aspect-ratio:800/1120;
+  background:url(img/ribbon2.webp) center/contain no-repeat;
+  display:flex;align-items:center;justify-content:center;padding:26% 13% 12%}
 .ribbon .invite__text{gap:.55rem}
 .ribbon .hand{font-size:clamp(1.15rem,4vw,1.6rem);text-wrap:balance;max-width:15em}
 .ribbon .venue{font-size:clamp(.72rem,2.6vw,.9rem)}
