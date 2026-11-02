@@ -442,7 +442,7 @@ fieldset.field{border:0;margin:0;padding:0}
   <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.6L12 18.5v-13L7.6 9.5H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18 6.5a7.5 7.5 0 0 1 0 11"/></svg>
   <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.6L12 18.5v-13L7.6 9.5H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
 </button>
-<audio id="bgm" loop preload="none"></audio>
+<audio id="bgm" loop preload="none" src="audio/song.mp3"></audio>
 
 <main>
   <section class="block blue invite scallop">
@@ -635,7 +635,11 @@ fieldset.field{border:0;margin:0;padding:0}
   }
   function applySound(){
     if(!bgm.getAttribute('src')) return;
-    if(on){var p=bgm.play(); if(p&&p.catch) p.catch(function(){});} else {bgm.pause();}
+    if(on){
+      /* Soft fade-in so the music never starts with a jolt. */
+      bgm.volume=0; var p=bgm.play(); if(p&&p.catch) p.catch(function(){});
+      var v=0, t=setInterval(function(){v=Math.min(.7,v+.035); bgm.volume=v; if(v>=.7) clearInterval(t);},100);
+    } else {bgm.pause();}
   }
   enter.addEventListener('click',function(){
     root.classList.remove('locked');
