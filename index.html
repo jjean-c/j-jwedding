@@ -567,7 +567,7 @@ fieldset.field{border:0;margin:0;padding:0}
           <textarea class="textarea" id="note" name="note" rows="2" maxlength="1000"></textarea>
         </div>
         <!-- Spam trap: hidden from people, bots fill it in. -->
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <input type="text" name="hp_trap_9" tabindex="-1" autocomplete="new-password" aria-hidden="true" style="display:none">
         <p class="status" id="status" role="status"></p>
         <button class="btn solid" type="submit" id="send">send rsvp</button>
       </form>
@@ -656,7 +656,7 @@ fieldset.field{border:0;margin:0;padding:0}
     var done=(rec==='Yes'?'Thank you, '+name+'. We can\u2019t wait to see you!':'Thank you, '+name+'. We will miss you.');
     if(!SCRIPT_URL){say(done+' (Preview only, nothing was saved.)');return;}
     var body=new URLSearchParams({name:name,reception:rec,afterparty:ap,email:email,
-      plusone:el.plusone.value.trim(),diet:el.diet.value.trim(),note:el.note.value.trim(),website:el.website.value});
+      plusone:el.plusone.value.trim(),diet:el.diet.value.trim(),note:el.note.value.trim(),hp:el.hp_trap_9.value});
     send.disabled=true; say('Sending\u2026');
     fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:body})
       .then(function(){say(done);form.reset();})
