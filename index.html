@@ -343,9 +343,9 @@ fieldset.field{border:0;margin:0;padding:0}
   background:url(img/frame.webp) center/contain no-repeat;
   display:flex;align-items:center;justify-content:center;padding:24% 19% 14%}
 .ribbon .invite__text{gap:.55rem}
-.ribbon .hand{font-size:clamp(1.1rem,3.8vw,1.45rem)}
+.ribbon .hand{font-size:clamp(1.15rem,4vw,1.5rem);text-wrap:balance;max-width:15em}
 .ribbon .venue{font-size:clamp(.72rem,2.6vw,.9rem)}
-.ribbon .lead{font-size:clamp(1.05rem,4vw,1.6rem)}
+.ribbon .lead{font-size:clamp(1.2rem,4.6vw,1.75rem)}
 .ribbon .date-big{font-size:clamp(1.6rem,6.6vw,2.7rem)}
 .mono{display:flex;align-items:flex-end;justify-content:center;gap:.1rem;margin-bottom:.2rem}
 .mono img{width:clamp(64px,17vw,84px);height:auto}
@@ -458,9 +458,6 @@ fieldset.field{border:0;margin:0;padding:0}
   <div class="wrap gate__body">
     <p class="eyebrow" style="color:var(--ink)">You&rsquo;re invited to</p>
     <h1 class="names"><span>Jean</span><span class="amp">&amp;</span><span>James&rsquo;</span><span class="wed">wedding</span></h1>
-    <div class="gate__meta">
-      <p class="gate__date">Sunday 27 June 2027</p>
-    </div>
     <!-- Opener art: data-opener="otter" or "heart". Both stay in the page so switching back is one word. -->
     <button class="heart" id="enter" type="button" data-opener="otter" aria-label="Tap to open the invitation">
       <svg viewBox="0 0 200 190" aria-hidden="true">
@@ -502,8 +499,8 @@ fieldset.field{border:0;margin:0;padding:0}
       </div>
       <div class="ribbon rv">
         <div class="invite__text">
-          <p class="hand">together with our families</p>
-          <h2 class="lead">request the pleasure of your company at our wedding reception</h2>
+          <p class="hand">to the people who made us who we are</p>
+          <h2 class="lead">we&rsquo;d love to celebrate with you</h2>
           <p class="date-big">Sunday<br>27 June 2027</p>
         </div>
       </div>
