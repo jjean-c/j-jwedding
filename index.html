@@ -186,11 +186,12 @@ h2.title{
 .flow{display:flex;flex-direction:column;gap:clamp(36px,6vw,56px)}
 
 /* ---------- Invitation (blue block, three framed photos) ---------- */
-.invite .wrap{display:flex;flex-direction:column;align-items:center;gap:clamp(36px,7vw,52px)}
+.invite .wrap{display:flex;flex-direction:column;align-items:center;gap:clamp(4px,1.5vw,12px)}
+.block.invite{padding-top:clamp(40px,7vw,72px);padding-bottom:clamp(24px,4vw,44px)}
 .trio{
   --bw:clamp(12px,3.6vw,26px);
   position:relative;display:flex;justify-content:center;align-items:center;
-  width:100%;max-width:760px;padding:clamp(20px,4.5vw,40px) 0;
+  width:100%;max-width:760px;padding:clamp(6px,1.5vw,14px) 0;
 }
 .frame{
   position:relative;flex:0 0 33%;aspect-ratio:4/5;
@@ -339,13 +340,13 @@ fieldset.field{border:0;margin:0;padding:0}
 @keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
 
 /* ---------- Watercolor pieces: ribbon frame, monogram, wildflower edges, butterflies ---------- */
-.ribbon{position:relative;width:min(100%,540px);aspect-ratio:704/935;
+.ribbon{position:relative;width:min(100%,480px);aspect-ratio:704/935;
   background:url(img/frame.webp) center/contain no-repeat;
   display:flex;align-items:center;justify-content:center;padding:24% 19% 14%}
 .ribbon .invite__text{gap:.55rem}
-.ribbon .hand{font-size:clamp(1.15rem,4vw,1.5rem);text-wrap:balance;max-width:15em}
+.ribbon .hand{font-size:clamp(1.15rem,4vw,1.6rem);text-wrap:balance;max-width:15em}
 .ribbon .venue{font-size:clamp(.72rem,2.6vw,.9rem)}
-.ribbon .lead{font-size:clamp(1.2rem,4.6vw,1.75rem)}
+.ribbon .lead{font-size:clamp(1.2rem,4.6vw,1.9rem)}
 .ribbon .date-big{font-size:clamp(1.6rem,6.6vw,2.7rem)}
 .mono{display:flex;align-items:flex-end;justify-content:center;gap:.1rem;margin-bottom:.2rem}
 .mono img{width:clamp(64px,17vw,84px);height:auto}
