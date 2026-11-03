@@ -343,12 +343,13 @@ fieldset.field{border:0;margin:0;padding:0}
 /* ---------- Watercolor pieces: ribbon frame, monogram, wildflower edges, butterflies ---------- */
 .ribbon{position:relative;width:min(100%,480px);aspect-ratio:800/722;
   background:url(img/ribbon3.webp) center/contain no-repeat;
-  display:flex;align-items:center;justify-content:center;padding:22% 11% 9%}
-.ribbon .invite__text{gap:.55rem}
-.ribbon .hand{font-size:clamp(1.15rem,4vw,1.6rem);text-wrap:balance;max-width:15em}
-.ribbon .venue{font-size:clamp(.72rem,2.6vw,.9rem)}
-.ribbon .lead{font-size:clamp(1.2rem,4.6vw,1.9rem)}
-.ribbon .date-big{font-size:clamp(1.6rem,6.6vw,2.7rem)}
+  /* Padding matches the open space inside the ribbon: below the bow, inside the sides and bottom. */
+  display:flex;align-items:center;justify-content:center;padding:21% 14% 9%}
+.ribbon .invite__text{gap:0;width:100%;text-align:center}
+.ribbon .hand{font-size:clamp(1.05rem,3.7vw,1.4rem);line-height:1.25;text-wrap:balance;max-width:14em;margin:0 auto}
+.ribbon .lead{font-size:clamp(1.4rem,5.4vw,2rem);line-height:1.15;text-wrap:balance;max-width:11em;margin:.45em auto 0}
+.ribbon .rdate{font-family:var(--caps);font-weight:500;font-variant-numeric:lining-nums;font-size:clamp(.8rem,2.9vw,.98rem);letter-spacing:.24em;text-transform:uppercase;margin-top:1.3em;padding-top:1em;position:relative}
+.ribbon .rdate::before{content:"";position:absolute;top:0;left:50%;width:32px;height:1px;background:currentColor;opacity:.45;transform:translateX(-50%)}
 .mono{display:flex;align-items:flex-end;justify-content:center;gap:.1rem;margin-bottom:.2rem}
 .mono img{width:clamp(64px,17vw,84px);height:auto}
 .mono img:last-child{transform:translateX(-4px)}
@@ -503,7 +504,7 @@ fieldset.field{border:0;margin:0;padding:0}
         <div class="invite__text">
           <p class="hand">to the people who made us who we are</p>
           <h2 class="lead">we&rsquo;d love to celebrate with you</h2>
-          <p class="date-big">Sunday<br>27 June 2027</p>
+          <p class="rdate">Sunday 27 June 2027</p>
         </div>
       </div>
     </div>
