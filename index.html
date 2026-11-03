@@ -291,7 +291,7 @@ h2.title{
 }
 .unit .lbl{font-family:var(--caps);font-weight:500;font-size:.85rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink)}
 .wrap.rsvp{display:flex;flex-direction:column;align-items:center;gap:1rem}
-.env{width:clamp(96px,26vw,124px);height:auto;transform:rotate(-4deg);stroke-width:3.2}
+.env{width:clamp(130px,36vw,180px);height:auto;transform:rotate(-4deg);filter:drop-shadow(0 6px 10px rgba(45,58,71,.18))}
 .card{
   width:100%;margin-top:.8rem;text-align:left;
   /* Paper fills only up to the middle of the wavy line, so the painting shows outside it. */
@@ -587,19 +587,13 @@ fieldset.field{border:0;margin:0;padding:0}
 
   <section class="band flow" style="--art:url(img/irises.jpg);--pos:center 40%">
     <div class="wrap count">
-      <h2 class="title rv">Counting down</h2>
+      <h2 class="title rv">See you in</h2>
       <div class="units rv" aria-live="off">
         <div class="unit"><span class="num" id="d">000</span><span class="lbl">Days</span></div>
       </div>
-      <p class="hand rv">until we celebrate</p>
     </div>
     <div class="wrap rsvp">
-      <svg class="ico env rv" viewBox="0 0 170 120" aria-hidden="true">
-        <path d="M8 22L160 8l4 90L12 110z"/>
-        <path d="M10 24l76 46L162 10"/>
-        <path d="M12 108l56-46M163 97l-59-39"/>
-        <path class="f" d="M86 70c-8-12-24-3-13 10l13 13 13-13c11-13-5-22-13-10z"/>
-      </svg>
+      <img class="env rv" src="img/envelope.webp" alt="" width="520" height="374">
       <h2 class="title rv">RSVP</h2>
       <p class="hand rv">kindly reply by 28 May 2027</p>
       <form class="card rv" id="rsvp" novalidate>
