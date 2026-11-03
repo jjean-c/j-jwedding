@@ -390,6 +390,19 @@ fieldset.field{border:0;margin:0;padding:0}
   75%{transform:translate(-10px,-8px) rotate(6deg)}
 }
 
+/* ---------- For travelling guests (sage block) ---------- */
+.sage{--bg:#E8ECDF;background:#E8ECDF}
+.travel .wrap{display:flex;flex-direction:column;align-items:center;gap:2rem}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2.4rem;width:100%;text-align:center}
+.col{display:flex;flex-direction:column;align-items:center;gap:.25rem;min-width:0}
+.col .note{font-family:var(--form);font-weight:300;font-size:.88rem;color:var(--ink-soft);margin-bottom:.6rem}
+.places{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.9rem;width:100%}
+.places a{display:flex;flex-direction:column;gap:.1rem;text-decoration:none;color:var(--ink)}
+.places .pn{font-family:var(--display);font-size:1.4rem;line-height:1.2;text-decoration:underline;text-decoration-color:rgba(169,84,95,.35);text-underline-offset:4px;text-decoration-thickness:1px;transition:text-decoration-color .25s}
+.places a:hover .pn{text-decoration-color:var(--red)}
+.places .pd{font-family:var(--form);font-weight:300;font-size:.85rem;color:var(--ink-soft)}
+@media (max-width:640px){.cols{grid-template-columns:1fr;gap:2.6rem}}
+
 /* ---------- Footer ---------- */
 .foot .wrap{display:flex;flex-direction:column;align-items:center;gap:.9rem}
 .foot .sign{font-family:var(--display);font-style:italic;font-weight:300;font-size:clamp(2rem,7.5vw,3rem);line-height:1.1}
@@ -645,6 +658,32 @@ fieldset.field{border:0;margin:0;padding:0}
         <p class="status" id="status" role="status"></p>
         <button class="btn solid" type="submit" id="send">send rsvp</button>
       </form>
+    </div>
+  </section>
+
+  <section class="block sage travel scallop">
+    <div class="wrap">
+      <h2 class="title rv">For travelling guests</h2>
+      <div class="cols rv">
+        <div class="col">
+          <p class="hand">where to stay</p>
+          <p class="note">Two hotels right by the venue</p>
+          <ul class="places">
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Aman+Nai+Lert+Bangkok" target="_blank" rel="noopener"><span class="pn">Aman Nai Lert Bangkok</span><span class="pd">Set inside Nai Lert Park itself</span></a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Movenpick+BDMS+Wellness+Resort+Bangkok" target="_blank" rel="noopener"><span class="pn">M&ouml;venpick BDMS Wellness Resort</span><span class="pd">Right next to the park on Wireless Road</span></a></li>
+          </ul>
+        </div>
+        <div class="col">
+          <p class="hand">our favorite places</p>
+          <p class="note">A few spots we love in Bangkok</p>
+          <ul class="places">
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Shirokane+Tori+Tama+Bangkok" target="_blank" rel="noopener"><span class="pn">Toritama</span><span class="pd">Our go-to for Japanese yakitori</span></a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Yaowarat+Road+Bangkok" target="_blank" rel="noopener"><span class="pn">Chinatown</span><span class="pd">Yaowarat Road, best after dark for street food</span></a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Nang+Loeng+Market+Bangkok" target="_blank" rel="noopener"><span class="pn">Nang Loeng Market</span><span class="pd">One of Bangkok&rsquo;s oldest markets, come hungry</span></a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Banthat+Thong+Road+Bangkok" target="_blank" rel="noopener"><span class="pn">Banthat Thong Road</span><span class="pd">A long strip of street food near Chula</span></a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
