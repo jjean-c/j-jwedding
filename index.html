@@ -408,23 +408,31 @@ fieldset.field{border:0;margin:0;padding:0}
 .hotel .pd{font-family:var(--form);font-weight:300;font-size:.85rem;color:var(--ink-soft);text-align:center}
 @media (max-width:640px){.hotels{grid-template-columns:1fr;gap:2rem}}
 
-/* ---------- A quick recap: a scrapbook page of taped paper scraps ---------- */
+/* ---------- A quick recap: a row of Polaroids you swipe or click through ---------- */
 .story{--bg:var(--paper);background:var(--paper)}
-.story .wrap{max-width:620px;display:flex;flex-direction:column;align-items:center;gap:1.6rem}
-.book{list-style:none;margin:0;padding:0;width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(4px,2vw,18px) clamp(10px,3vw,26px)}
-.sc{position:relative;aspect-ratio:var(--ar);background:var(--paper) center/100% 100% no-repeat;transform:rotate(var(--rot));
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.1rem;padding:15% 12% 15%;
-  filter:drop-shadow(0 4px 8px rgba(45,58,71,.10))}
-.sc:nth-child(even){margin-top:clamp(28px,8vw,56px)}
-.sc:nth-child(4n+1){margin-left:4%}
-.sc:nth-child(4n+2){margin-right:3%}
-.snap2{display:block;width:54%;aspect-ratio:1;background:#fffdf8;padding:4px 4px 12px;box-shadow:0 1px 4px rgba(45,58,71,.16);
-  transform:rotate(calc(var(--rot) * -0.7));margin-bottom:.35rem}
-.snap2 .ph,.snap2 img{display:block;width:100%;height:100%;object-fit:cover;
-  background:radial-gradient(ellipse at 35% 30%,rgba(255,255,255,.55),transparent 62%),var(--tint)}
-.sc .yr{font-family:var(--display);font-weight:400;font-size:clamp(1.05rem,4vw,1.45rem);line-height:1;color:var(--steel);font-variant-numeric:lining-nums}
-.sc .what{font-family:var(--hand);font-style:italic;font-size:clamp(.92rem,3.4vw,1.15rem);line-height:1.1;color:var(--red);text-align:center}
-.sc:last-child{grid-column:1 / -1;width:min(58%,300px);justify-self:center;margin-top:clamp(10px,3vw,24px)}
+.story .wrap{display:flex;flex-direction:column;align-items:center}
+.reel{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+  margin-top:1.4rem;padding:18px 0 26px;
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent)}
+.reel::-webkit-scrollbar{display:none}
+.reel:focus-visible{outline:2px solid var(--steel);outline-offset:4px}
+.pols{list-style:none;margin:0;padding:0 calc(50% - clamp(170px,52vw,230px)/2);display:flex;gap:clamp(14px,4vw,28px);width:max-content}
+.pol{flex:none;width:clamp(170px,52vw,230px);scroll-snap-align:center;transform:rotate(var(--rot));
+  background:linear-gradient(160deg,#FFFFFD,#F7F5EF);padding:clamp(11px,3.4vw,15px) clamp(11px,3.4vw,15px) 0;border-radius:2px;
+  box-shadow:0 1px 1px rgba(45,58,71,.06),0 8px 18px rgba(45,58,71,.14);transition:transform .35s}
+.pol:hover{transform:rotate(0deg) translateY(-3px)}
+.win{display:block;aspect-ratio:1;background:#2b2826;overflow:hidden}
+.win .ph,.win img{display:block;width:100%;height:100%;object-fit:cover;
+  background:radial-gradient(ellipse at 35% 30%,rgba(255,255,255,.5),transparent 62%),var(--tint)}
+.pcap{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.1rem;min-height:clamp(58px,17vw,74px);text-align:center}
+.pcap .yr{font-family:var(--display);font-size:clamp(1.15rem,4.4vw,1.4rem);line-height:1;color:var(--steel);font-variant-numeric:lining-nums}
+.pcap .what{font-family:var(--hand);font-style:italic;font-size:clamp(1rem,3.8vw,1.2rem);line-height:1.1;color:var(--red)}
+.reel-nav{display:flex;justify-content:center;gap:14px}
+.rn{width:42px;height:42px;border-radius:50%;border:1px solid rgba(45,58,71,.25);background:var(--paper);color:var(--ink);
+  display:grid;place-items:center;cursor:pointer;transition:background .25s,opacity .25s}
+.rn:hover{background:#F3EADB}
+.rn:disabled{opacity:.3;cursor:default}
+.rn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 
 /* ---------- Footer ---------- */
 .foot .wrap{display:flex;flex-direction:column;align-items:center;gap:.9rem}
@@ -701,44 +709,51 @@ fieldset.field{border:0;margin:0;padding:0}
   <section class="block story scallop">
     <div class="wrap">
       <h2 class="title rv">A quick recap</h2>
-      <ol class="book">
-        <li class="sc rv" style="--paper:url(img/scrap-0.webp);--ar:279/305;--rot:-3deg;--tint:#E9C9CF">
-          <span class="snap2"><span class="ph"></span></span>
-          <span class="yr">2021</span><span class="what">first date</span>
-        </li>
-        <li class="sc rv" style="--paper:url(img/scrap-1.webp);--ar:252/286;--rot:2.5deg;--tint:#D9E2CB">
-          <span class="snap2"><span class="ph"></span></span>
-          <span class="yr">2022</span><span class="what">more dates</span>
-        </li>
-        <li class="sc rv" style="--paper:url(img/scrap-2.webp);--ar:327/279;--rot:1.5deg;--tint:#CFDCE5">
-          <span class="snap2"><span class="ph"></span></span>
-          <span class="yr">2023</span><span class="what">let&rsquo;s travel</span>
-        </li>
-        <li class="sc rv" style="--paper:url(img/scrap-3.webp);--ar:316/297;--rot:-2deg;--tint:#E9D6C8">
-          <span class="snap2"><span class="ph"></span></span>
-          <span class="yr">2023</span><span class="what">but also LDR</span>
-        </li>
-        <li class="sc rv" style="--paper:url(img/scrap-4.webp);--ar:284/277;--rot:3deg;--tint:#D4DDD2">
-          <span class="snap2"><span class="ph"></span></span>
-          <span class="yr">2024</span><span class="what">first Disney trip</span>
-        </li>
-        <li class="sc rv" style="--paper:url(img/scrap-5.webp);--ar:427/347;--rot:-2.5deg;--tint:#D6DCE8">
-          <span class="snap2"><span class="ph"></span></span>
-          <span class="yr">2025</span><span class="what">Boston</span>
-        </li>
-        <li class="sc rv" style="--paper:url(img/scrap-6.webp);--ar:281/280;--rot:2deg;--tint:#EFE3D3">
-          <span class="snap2"><span class="ph"></span></span>
-          <span class="yr">2025</span><span class="what">proposed</span>
-        </li>
-        <li class="sc rv" style="--paper:url(img/scrap-7.webp);--ar:289/283;--rot:-1.5deg;--tint:#E3D3DC">
-          <span class="snap2"><span class="ph"></span></span>
-          <span class="yr">2026</span><span class="what">San Francisco</span>
-        </li>
-        <li class="sc rv" style="--paper:url(img/scrap-8.webp);--ar:289/283;--rot:1deg;--tint:#E8E0CF">
-          <span class="snap2"><span class="ph"></span></span>
-          <span class="yr">2027</span><span class="what">married</span>
-        </li>
+
+    </div>
+    <div class="reel rv" id="reel" tabindex="0" aria-label="A quick recap, 2021 to 2027">
+      <ol class="pols">
+          <li class="pol" style="--rot:-3deg;--tint:#E9C9CF">
+            <span class="win"><span class="ph"></span></span>
+            <span class="pcap"><span class="yr">2021</span><span class="what">first date</span></span>
+          </li>
+          <li class="pol" style="--rot:2deg;--tint:#D9E2CB">
+            <span class="win"><span class="ph"></span></span>
+            <span class="pcap"><span class="yr">2022</span><span class="what">more dates</span></span>
+          </li>
+          <li class="pol" style="--rot:-1.5deg;--tint:#CFDCE5">
+            <span class="win"><span class="ph"></span></span>
+            <span class="pcap"><span class="yr">2023</span><span class="what">let&rsquo;s travel</span></span>
+          </li>
+          <li class="pol" style="--rot:2.5deg;--tint:#E9D6C8">
+            <span class="win"><span class="ph"></span></span>
+            <span class="pcap"><span class="yr">2023</span><span class="what">but also LDR</span></span>
+          </li>
+          <li class="pol" style="--rot:-2.5deg;--tint:#D4DDD2">
+            <span class="win"><span class="ph"></span></span>
+            <span class="pcap"><span class="yr">2024</span><span class="what">first Disney trip</span></span>
+          </li>
+          <li class="pol" style="--rot:1.5deg;--tint:#D6DCE8">
+            <span class="win"><span class="ph"></span></span>
+            <span class="pcap"><span class="yr">2025</span><span class="what">Boston</span></span>
+          </li>
+          <li class="pol" style="--rot:-2deg;--tint:#EFE3D3">
+            <span class="win"><span class="ph"></span></span>
+            <span class="pcap"><span class="yr">2025</span><span class="what">proposed</span></span>
+          </li>
+          <li class="pol" style="--rot:3deg;--tint:#E3D3DC">
+            <span class="win"><span class="ph"></span></span>
+            <span class="pcap"><span class="yr">2026</span><span class="what">San Francisco</span></span>
+          </li>
+          <li class="pol" style="--rot:-1deg;--tint:#E8E0CF">
+            <span class="win"><span class="ph"></span></span>
+            <span class="pcap"><span class="yr">2027</span><span class="what">married</span></span>
+          </li>
       </ol>
+    </div>
+    <div class="reel-nav rv">
+      <button type="button" class="rn" id="rprev" aria-label="Earlier moments"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button type="button" class="rn" id="rnext" aria-label="Later moments"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
   </section>
 
@@ -807,6 +822,16 @@ fieldset.field{border:0;margin:0;padding:0}
     },{rootMargin:'0px 0px -8% 0px',threshold:.12});
     rv.forEach(function(el){io.observe(el);});
   } else {rv.forEach(function(el){el.classList.add('in');});}
+
+  /* Recap row: arrow buttons step one Polaroid at a time; swiping still works on phones. */
+  var reel=document.getElementById('reel'),rp=document.getElementById('rprev'),rnx=document.getElementById('rnext');
+  if(reel&&rp&&rnx){
+    var step=function(){var f=reel.querySelector('.pol');return f?f.getBoundingClientRect().width+20:240;};
+    var sync=function(){rp.disabled=reel.scrollLeft<4;rnx.disabled=reel.scrollLeft+reel.clientWidth>=reel.scrollWidth-4;};
+    rp.addEventListener('click',function(){reel.scrollBy({left:-step(),behavior:'smooth'});});
+    rnx.addEventListener('click',function(){reel.scrollBy({left:step(),behavior:'smooth'});});
+    reel.addEventListener('scroll',sync,{passive:true}); window.addEventListener('resize',sync); sync();
+  }
 
   /* Countdown to 6:00 pm Bangkok time (UTC+7), 27 June 2027. */
   var target=Date.UTC(2027,5,27,11,0,0);
