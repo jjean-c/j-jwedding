@@ -423,13 +423,18 @@ fieldset.field{border:0;margin:0;padding:0}
 .fr.dn .note{grid-row:3;justify-content:flex-start;padding:10px 4px 0}
 .fr .cell{grid-row:2;position:relative;width:calc(var(--cw) + 18px);padding:22px 9px}
 /* The strip itself is drawn behind each photo: charcoal fill, pencil hatching, uneven sprocket holes, all run through the pen-wobble filter. */
-.fr .cell::before{content:"";position:absolute;inset:0 -.5px;z-index:0;background:url(img/film-0.png) 0 0/100% 100% no-repeat}
-.fr:nth-child(3n) .cell::before{background-image:url(img/film-1.png)}
-.fr:nth-child(3n+1) .cell::before{background-image:url(img/film-2.png)}
+.fr .cell::before{content:"";position:absolute;inset:0 -.5px;z-index:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='12'%3E%3Crect x='3' y='2' width='8' height='8' rx='2' fill='%23FFF7E6'/%3E%3C/svg%3E") 0 5px/14px 12px repeat-x,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='12'%3E%3Crect x='3' y='2' width='8' height='8' rx='2' fill='%23FFF7E6'/%3E%3C/svg%3E") 0 calc(100% - 5px)/14px 12px repeat-x,#3B3636}
 .fr .ph,.fr .cell img{position:relative;z-index:1}
 .fr .ph{display:block;width:var(--cw);aspect-ratio:4/5;background:radial-gradient(ellipse at 35% 30%,rgba(255,255,255,.5),transparent 62%),var(--tint)}
 .fr .cell img{display:block;width:var(--cw);aspect-ratio:4/5;object-fit:cover}
 .fr:last-child .cell{border-radius:0 6px 6px 0}
+.reel-nav{display:flex;justify-content:center;gap:14px;margin-top:.4rem}
+.rn{width:42px;height:42px;border-radius:50%;border:1px solid rgba(45,58,71,.25);background:var(--paper);color:var(--ink);
+  display:grid;place-items:center;cursor:pointer;transition:background .25s,opacity .25s}
+.rn:hover{background:#F3EADB}
+.rn:disabled{opacity:.3;cursor:default}
+.rn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .fr .yr{font-family:'Gaegu',var(--hand);font-weight:400;font-size:1.45rem;line-height:1;color:var(--steel);font-variant-numeric:lining-nums}
 .fr .what{font-family:'Gaegu',var(--hand);font-size:1.2rem;line-height:1.1;color:var(--red);max-width:9em}
 .fr.dn .note{flex-direction:column-reverse}
@@ -716,10 +721,9 @@ fieldset.field{border:0;margin:0;padding:0}
 
   <section class="block story scallop">
     <div class="wrap">
-      <h2 class="title rv">Our story</h2>
-      <p class="swipe rv" aria-hidden="true">swipe &rarr;</p>
+      <h2 class="title rv">A quick recap</h2>
     </div>
-    <div class="reel rv" tabindex="0" aria-label="Our story, 2021 to 2027">
+    <div class="reel rv" id="reel" tabindex="0" aria-label="A quick recap, 2021 to 2027">
       <ol class="film">
           <li class="can" aria-hidden="true">
             <svg viewBox="0 0 150 230">
@@ -776,6 +780,10 @@ fieldset.field{border:0;margin:0;padding:0}
             <div class="cell"><span class="ph"></span></div>
           </li>
       </ol>
+    </div>
+    <div class="reel-nav rv">
+      <button type="button" class="rn" id="rprev" aria-label="Earlier moments"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button type="button" class="rn" id="rnext" aria-label="Later moments"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
   </section>
 
@@ -844,6 +852,16 @@ fieldset.field{border:0;margin:0;padding:0}
     },{rootMargin:'0px 0px -8% 0px',threshold:.12});
     rv.forEach(function(el){io.observe(el);});
   } else {rv.forEach(function(el){el.classList.add('in');});}
+
+  /* Recap strip: arrow buttons for mouse users, swipe still works on phones. */
+  var reel=document.getElementById('reel'),rp=document.getElementById('rprev'),rnx=document.getElementById('rnext');
+  if(reel&&rp&&rnx){
+    var step=function(){var f=reel.querySelector('.fr');return f?f.getBoundingClientRect().width*2:240;};
+    var sync=function(){rp.disabled=reel.scrollLeft<4;rnx.disabled=reel.scrollLeft+reel.clientWidth>=reel.scrollWidth-4;};
+    rp.addEventListener('click',function(){reel.scrollBy({left:-step(),behavior:'smooth'});});
+    rnx.addEventListener('click',function(){reel.scrollBy({left:step(),behavior:'smooth'});});
+    reel.addEventListener('scroll',sync,{passive:true}); window.addEventListener('resize',sync); sync();
+  }
 
   /* Countdown to 6:00 pm Bangkok time (UTC+7), 27 June 2027. */
   var target=Date.UTC(2027,5,27,11,0,0);
