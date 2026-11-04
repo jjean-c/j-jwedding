@@ -421,10 +421,11 @@ fieldset.field{border:0;margin:0;padding:0}
 .fr{--cw:clamp(104px,30vw,140px);display:grid;grid-template-rows:76px auto 76px;scroll-snap-align:center}
 .fr .note{margin:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:0 4px 10px;transform:rotate(var(--tilt))}
 .fr.dn .note{grid-row:3;justify-content:flex-start;padding:10px 4px 0}
-.fr .cell{grid-row:2;position:relative;width:calc(var(--cw) + 18px);padding:22px 9px}
+.fr .cell{grid-row:2;position:relative;width:calc(var(--cw) + 16px);padding:26px 8px}
 /* The strip itself is drawn behind each photo: charcoal fill, pencil hatching, uneven sprocket holes, all run through the pen-wobble filter. */
 .fr .cell::before{content:"";position:absolute;inset:0 -.5px;z-index:0;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='12'%3E%3Crect x='3' y='2' width='8' height='8' rx='2' fill='%23FFF7E6'/%3E%3C/svg%3E") 0 5px/14px 12px repeat-x,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='12'%3E%3Crect x='3' y='2' width='8' height='8' rx='2' fill='%23FFF7E6'/%3E%3C/svg%3E") 0 calc(100% - 5px)/14px 12px repeat-x,#3B3636}
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='18'%3E%3Crect x='4' y='2.5' width='9' height='13' rx='2' fill='%23FFF7E6'/%3E%3C/svg%3E") 0 3px/16px 18px repeat-x,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='18'%3E%3Crect x='4' y='2.5' width='9' height='13' rx='2' fill='%23FFF7E6'/%3E%3C/svg%3E") 0 calc(100% - 3px)/16px 18px repeat-x,
+    linear-gradient(180deg,#5E5552,#544B48 50%,#5E5552)}
 .fr .ph,.fr .cell img{position:relative;z-index:1}
 .fr .ph{display:block;width:var(--cw);aspect-ratio:4/5;background:radial-gradient(ellipse at 35% 30%,rgba(255,255,255,.5),transparent 62%),var(--tint)}
 .fr .cell img{display:block;width:var(--cw);aspect-ratio:4/5;object-fit:cover}
@@ -440,12 +441,7 @@ fieldset.field{border:0;margin:0;padding:0}
 .fr.dn .note{flex-direction:column-reverse}
 .fr.dn .note .yr{margin-top:.15rem}
 .can{display:grid;grid-template-rows:76px auto 76px;margin-right:-6px;position:relative;z-index:2}
-.can svg{grid-row:1 / 4;align-self:center;width:clamp(110px,30vw,150px);height:auto;overflow:visible;transform:rotate(-4deg)}
-.can .pen{fill:none;stroke:#3E3A3A;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round;filter:url(#r-px-l)}
-.can text{font-family:'Gaegu',var(--hand);fill:#3E3A3A}
-.can .lbl-big{font-size:22px;fill:var(--red)}
-.can .lbl-sm{font-size:14px}
-.can .lbl-num{font-size:20px;fill:#3E3A3A}
+.can img{grid-row:1 / 4;align-self:center;width:clamp(100px,28vw,140px);height:auto;margin-right:-8px}
 
 /* ---------- Footer ---------- */
 .foot .wrap{display:flex;flex-direction:column;align-items:center;gap:.9rem}
@@ -726,22 +722,7 @@ fieldset.field{border:0;margin:0;padding:0}
     <div class="reel rv" id="reel" tabindex="0" aria-label="A quick recap, 2021 to 2027">
       <ol class="film">
           <li class="can" aria-hidden="true">
-            <svg viewBox="0 0 150 230">
-              <g class="pen">
-                <path d="M58 14h34v14H58z" fill="#E9E2D6"/>
-                <path d="M52 26h46v10H52z" fill="#3E3A3A"/>
-                <path d="M30 36c0-4 4-7 9-7h72c5 0 9 3 9 7v158c0 4-4 7-9 7H39c-5 0-9-3-9-7z" fill="#F4EDE0"/>
-                <path d="M30 70h90v92H30z" fill="#C9D9C8"/>
-                <path d="M30 70h90M30 162h90"/>
-                <path d="M41 46h68M41 54h48" stroke-width="1.6" opacity=".55"/>
-                <path d="M52 201h46v10H52z" fill="#3E3A3A"/>
-                <path d="M120 120h26v66h-26" fill="#3E3A3A"/>
-              </g>
-              <text x="75" y="102" text-anchor="middle" class="lbl-big">J &amp; J</text>
-              <text x="75" y="126" text-anchor="middle" class="lbl-sm">our story</text>
-              <text x="75" y="150" text-anchor="middle" class="lbl-sm">2021&ndash;2027</text>
-              <text x="75" y="188" text-anchor="middle" class="lbl-num">400</text>
-            </svg>
+            <img src="img/roll.png" alt="" width="394" height="488">
           </li>
           <li class="fr up" style="--tint:#E9C9CF;--tilt:-3deg">
             <p class="note"><span class="yr">2021</span><span class="what">first date</span></p>
