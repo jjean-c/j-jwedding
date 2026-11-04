@@ -408,32 +408,23 @@ fieldset.field{border:0;margin:0;padding:0}
 .hotel .pd{font-family:var(--form);font-weight:300;font-size:.85rem;color:var(--ink-soft);text-align:center}
 @media (max-width:640px){.hotels{grid-template-columns:1fr;gap:2rem}}
 
-/* ---------- A quick recap: one wandering line linking small photos ---------- */
+/* ---------- A quick recap: a scrapbook page of taped paper scraps ---------- */
 .story{--bg:var(--paper);background:var(--paper)}
-.story .wrap{max-width:560px;display:flex;flex-direction:column;align-items:center;gap:1.6rem}
-.path{list-style:none;margin:0;padding:10px 0 20px;position:relative;width:100%;display:flex;flex-direction:column;gap:clamp(28px,6vw,40px)}
-.wind{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:0}
-.wind path{fill:none;stroke:var(--steel);stroke-width:2.6;stroke-linecap:round;opacity:.75;filter:url(#r-px)}
-.mo{position:relative;z-index:1;display:grid;align-items:center;column-gap:clamp(12px,3.5vw,20px)}
-/* Captions sit on the outside of each photo, so the line only travels through the open middle. */
-.mo-l{grid-template-columns:1fr auto 1.6fr}
-.mo-r{grid-template-columns:1.6fr auto 1fr}
-@media (min-width:641px){.mo-l{grid-template-columns:1fr auto 2.6fr}.mo-r{grid-template-columns:2.6fr auto 1fr}}
-.mo .pic{grid-column:2;grid-row:1}
-.mo-l .cap{grid-column:1;grid-row:1;align-items:flex-end;text-align:right}
-.mo-r .cap{grid-column:3;grid-row:1;align-items:flex-start;text-align:left}
-.pic{position:relative;margin:0;flex:none;width:calc(var(--sz) * var(--k,1));aspect-ratio:1;padding:5px;background:var(--paper);
-  box-shadow:0 0 0 1.5px rgba(86,118,159,.55),0 4px 12px rgba(45,58,71,.10)}
-@media (max-width:640px){.pic{--k:.82}}
-.pic .ph,.pic img{display:block;width:100%;height:100%;object-fit:cover;border-radius:inherit;
+.story .wrap{max-width:620px;display:flex;flex-direction:column;align-items:center;gap:1.6rem}
+.book{list-style:none;margin:0;padding:0;width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(4px,2vw,18px) clamp(10px,3vw,26px)}
+.sc{position:relative;aspect-ratio:var(--ar);background:var(--paper) center/100% 100% no-repeat;transform:rotate(var(--rot));
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.1rem;padding:15% 12% 15%;
+  filter:drop-shadow(0 4px 8px rgba(45,58,71,.10))}
+.sc:nth-child(even){margin-top:clamp(28px,8vw,56px)}
+.sc:nth-child(4n+1){margin-left:4%}
+.sc:nth-child(4n+2){margin-right:3%}
+.snap2{display:block;width:54%;aspect-ratio:1;background:#fffdf8;padding:4px 4px 12px;box-shadow:0 1px 4px rgba(45,58,71,.16);
+  transform:rotate(calc(var(--rot) * -0.7));margin-bottom:.35rem}
+.snap2 .ph,.snap2 img{display:block;width:100%;height:100%;object-fit:cover;
   background:radial-gradient(ellipse at 35% 30%,rgba(255,255,255,.55),transparent 62%),var(--tint)}
-.pic.circle{border-radius:50%}
-.pic.arch{border-radius:999px 999px 10px 10px;aspect-ratio:4/5}
-.pic.oval{border-radius:50%;aspect-ratio:4/5}
-.dd2{position:absolute;height:auto;color:var(--red);fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
-.cap{margin:0;display:flex;flex-direction:column;gap:.05rem;min-width:0}
-.cap .yr{font-family:var(--display);font-weight:400;font-size:clamp(1.5rem,5.4vw,1.9rem);line-height:1;color:var(--steel);font-variant-numeric:lining-nums}
-.cap .what{font-family:var(--hand);font-style:italic;font-size:clamp(1.05rem,3.8vw,1.3rem);color:var(--red);white-space:nowrap}
+.sc .yr{font-family:var(--display);font-weight:400;font-size:clamp(1.05rem,4vw,1.45rem);line-height:1;color:var(--steel);font-variant-numeric:lining-nums}
+.sc .what{font-family:var(--hand);font-style:italic;font-size:clamp(.92rem,3.4vw,1.15rem);line-height:1.1;color:var(--red);text-align:center}
+.sc:last-child{grid-column:1 / -1;width:min(58%,300px);justify-self:center;margin-top:clamp(10px,3vw,24px)}
 
 /* ---------- Footer ---------- */
 .foot .wrap{display:flex;flex-direction:column;align-items:center;gap:.9rem}
@@ -710,43 +701,42 @@ fieldset.field{border:0;margin:0;padding:0}
   <section class="block story scallop">
     <div class="wrap">
       <h2 class="title rv">A quick recap</h2>
-      <ol class="path" id="path">
-        <svg class="wind" aria-hidden="true"><path id="windline"/></svg>
-        <li class="mo mo-l rv">
-          <figure class="pic circle" style="--sz:104px;--tint:#E9C9CF"><span class="ph"></span></figure>
-          <p class="cap"><span class="yr">2021</span><span class="what">first date</span></p>
+      <ol class="book">
+        <li class="sc rv" style="--paper:url(img/scrap-0.webp);--ar:279/305;--rot:-3deg;--tint:#E9C9CF">
+          <span class="snap2"><span class="ph"></span></span>
+          <span class="yr">2021</span><span class="what">first date</span>
         </li>
-        <li class="mo mo-r rv">
-          <figure class="pic arch" style="--sz:92px;--tint:#D9E2CB"><span class="ph"></span><svg class="dd2" style="top:-10px;right:-14px;width:22px" viewBox="0 0 48 48" aria-hidden="true"><use href="#d-sparkle"/></svg></figure>
-          <p class="cap"><span class="yr">2022</span><span class="what">more dates</span></p>
+        <li class="sc rv" style="--paper:url(img/scrap-1.webp);--ar:252/286;--rot:2.5deg;--tint:#D9E2CB">
+          <span class="snap2"><span class="ph"></span></span>
+          <span class="yr">2022</span><span class="what">more dates</span>
         </li>
-        <li class="mo mo-l rv">
-          <figure class="pic circle" style="--sz:112px;--tint:#CFDCE5"><span class="ph"></span></figure>
-          <p class="cap"><span class="yr">2023</span><span class="what">let&rsquo;s travel</span></p>
+        <li class="sc rv" style="--paper:url(img/scrap-2.webp);--ar:327/279;--rot:1.5deg;--tint:#CFDCE5">
+          <span class="snap2"><span class="ph"></span></span>
+          <span class="yr">2023</span><span class="what">let&rsquo;s travel</span>
         </li>
-        <li class="mo mo-r rv">
-          <figure class="pic oval" style="--sz:96px;--tint:#E9D6C8"><span class="ph"></span><svg class="dd2" style="bottom:-6px;left:-12px;width:16px" viewBox="0 0 48 48" aria-hidden="true"><use href="#d-heart"/></svg></figure>
-          <p class="cap"><span class="yr">2023</span><span class="what">but also LDR</span></p>
+        <li class="sc rv" style="--paper:url(img/scrap-3.webp);--ar:316/297;--rot:-2deg;--tint:#E9D6C8">
+          <span class="snap2"><span class="ph"></span></span>
+          <span class="yr">2023</span><span class="what">but also LDR</span>
         </li>
-        <li class="mo mo-l rv">
-          <figure class="pic circle" style="--sz:100px;--tint:#D4DDD2"><span class="ph"></span></figure>
-          <p class="cap"><span class="yr">2024</span><span class="what">first Disney trip</span></p>
+        <li class="sc rv" style="--paper:url(img/scrap-4.webp);--ar:284/277;--rot:3deg;--tint:#D4DDD2">
+          <span class="snap2"><span class="ph"></span></span>
+          <span class="yr">2024</span><span class="what">first Disney trip</span>
         </li>
-        <li class="mo mo-r rv">
-          <figure class="pic arch" style="--sz:108px;--tint:#D6DCE8"><span class="ph"></span><svg class="dd2" style="top:-14px;left:-10px;width:22px" viewBox="0 0 48 48" aria-hidden="true"><use href="#d-burst"/></svg></figure>
-          <p class="cap"><span class="yr">2025</span><span class="what">Boston</span></p>
+        <li class="sc rv" style="--paper:url(img/scrap-5.webp);--ar:427/347;--rot:-2.5deg;--tint:#D6DCE8">
+          <span class="snap2"><span class="ph"></span></span>
+          <span class="yr">2025</span><span class="what">Boston</span>
         </li>
-        <li class="mo mo-l rv">
-          <figure class="pic circle" style="--sz:92px;--tint:#EFE3D3"><span class="ph"></span><svg class="dd2" style="top:-8px;right:-10px;width:18px" viewBox="0 0 48 48" aria-hidden="true"><use href="#d-heart"/></svg></figure>
-          <p class="cap"><span class="yr">2025</span><span class="what">proposed</span></p>
+        <li class="sc rv" style="--paper:url(img/scrap-6.webp);--ar:281/280;--rot:2deg;--tint:#EFE3D3">
+          <span class="snap2"><span class="ph"></span></span>
+          <span class="yr">2025</span><span class="what">proposed</span>
         </li>
-        <li class="mo mo-r rv">
-          <figure class="pic oval" style="--sz:104px;--tint:#E3D3DC"><span class="ph"></span></figure>
-          <p class="cap"><span class="yr">2026</span><span class="what">San Francisco</span></p>
+        <li class="sc rv" style="--paper:url(img/scrap-7.webp);--ar:289/283;--rot:-1.5deg;--tint:#E3D3DC">
+          <span class="snap2"><span class="ph"></span></span>
+          <span class="yr">2026</span><span class="what">San Francisco</span>
         </li>
-        <li class="mo mo-l rv">
-          <figure class="pic arch" style="--sz:120px;--tint:#E8E0CF"><span class="ph"></span><svg class="dd2" style="top:-12px;right:-16px;width:26px" viewBox="0 0 48 48" aria-hidden="true"><use href="#d-sparkle"/></svg></figure>
-          <p class="cap"><span class="yr">2027</span><span class="what">married</span></p>
+        <li class="sc rv" style="--paper:url(img/scrap-8.webp);--ar:289/283;--rot:1deg;--tint:#E8E0CF">
+          <span class="snap2"><span class="ph"></span></span>
+          <span class="yr">2027</span><span class="what">married</span>
         </li>
       </ol>
     </div>
@@ -817,23 +807,6 @@ fieldset.field{border:0;margin:0;padding:0}
     },{rootMargin:'0px 0px -8% 0px',threshold:.12});
     rv.forEach(function(el){io.observe(el);});
   } else {rv.forEach(function(el){el.classList.add('in');});}
-
-  /* Recap: one loose line that winds from photo to photo, behind them. */
-  var pth=document.getElementById('path'),wl=document.getElementById('windline');
-  function wind(){
-    if(!pth||!wl) return;
-    var box=pth.getBoundingClientRect(),c=[].map.call(pth.querySelectorAll('.pic'),function(f){
-      var r=f.getBoundingClientRect(); return [r.left-box.left+r.width/2,r.top-box.top+r.height/2];});
-    if(c.length<2) return;
-    var d='M'+(c[0][0]-40)+','+(c[0][1]-60)+' C'+(c[0][0]-40)+','+(c[0][1]-20)+' '+c[0][0]+','+(c[0][1]-30)+' '+c[0][0]+','+c[0][1];
-    for(var i=1;i<c.length;i++){var a=c[i-1],b=c[i],my=(a[1]+b[1])/2;
-      var dy=b[1]-a[1]; d+=' C'+a[0]+','+(a[1]+dy*.85)+' '+b[0]+','+(b[1]-dy*.85)+' '+b[0]+','+b[1];}
-    var z=c[c.length-1]; d+=' C'+z[0]+','+(z[1]+40)+' '+(z[0]+30)+','+(z[1]+50)+' '+(z[0]+50)+','+(z[1]+70);
-    wl.setAttribute('d',d);
-  }
-  wind(); window.addEventListener('resize',wind);
-  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(wind);
-  window.addEventListener('load',wind);
 
   /* Countdown to 6:00 pm Bangkok time (UTC+7), 27 June 2027. */
   var target=Date.UTC(2027,5,27,11,0,0);
