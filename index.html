@@ -285,8 +285,7 @@ h2.title{
 .dress .lead{max-width:24ch}
 .dots{display:flex;justify-content:center;gap:clamp(.4rem,2.5vw,1.6rem);width:100%;max-width:440px}
 .sw{margin:0;flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:.55rem}
-.chip{width:clamp(36px,10vw,52px);aspect-ratio:1;border-radius:50%;background:var(--c);
-  box-shadow:0 0 0 4px var(--bg),0 0 0 5px rgba(45,58,71,.18)}
+.chip{width:clamp(48px,13vw,68px);height:auto;display:block}
 .sw figcaption{font-family:var(--display);font-style:italic;font-size:clamp(.85rem,3.4vw,1rem);white-space:nowrap;color:var(--ink-soft)}
 @media (prefers-reduced-motion:no-preference){
   .dots.in .sw{animation:dotIn .7s ease both;animation-delay:var(--d)}
@@ -396,15 +395,17 @@ fieldset.field{border:0;margin:0;padding:0}
 /* ---------- For travelling guests (sage block) ---------- */
 .sage{--bg:#E8ECDF;background:#E8ECDF}
 .travel .wrap{display:flex;flex-direction:column;align-items:center;gap:2rem}
-.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2.4rem;width:100%;text-align:center}
-.col{display:flex;flex-direction:column;align-items:center;gap:.25rem;min-width:0}
-.col .note{font-family:var(--form);font-weight:300;font-size:.88rem;color:var(--ink-soft);margin-bottom:.6rem}
-.places{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.9rem;width:100%}
-.places a{display:flex;flex-direction:column;gap:.1rem;text-decoration:none;color:var(--ink)}
-.places .pn{font-family:var(--display);font-size:1.4rem;line-height:1.2;text-decoration:underline;text-decoration-color:rgba(169,84,95,.35);text-underline-offset:4px;text-decoration-thickness:1px;transition:text-decoration-color .25s}
-.places a:hover .pn{text-decoration-color:var(--red)}
-.places .pd{font-family:var(--form);font-weight:300;font-size:.85rem;color:var(--ink-soft)}
-@media (max-width:640px){.cols{grid-template-columns:1fr;gap:2.6rem}}
+.travel .wrap{max-width:860px}
+.travel .wrap > .hand{margin-top:-1.2rem}
+.hotels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,3vw,32px);width:100%}
+.hotel{display:flex;flex-direction:column;align-items:center;gap:.35rem;text-decoration:none;color:var(--ink);min-width:0}
+.hotel img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:2px;
+  border:8px solid var(--paper);box-shadow:0 6px 18px rgba(45,58,71,.14);margin-bottom:.6rem;transition:transform .4s}
+.hotel:hover img{transform:translateY(-2px)}
+.hotel .pn{font-family:var(--display);font-size:1.35rem;line-height:1.2;text-align:center;text-decoration:underline;text-decoration-color:rgba(169,84,95,.35);text-underline-offset:4px;text-decoration-thickness:1px}
+.hotel:hover .pn{text-decoration-color:var(--red)}
+.hotel .pd{font-family:var(--form);font-weight:300;font-size:.85rem;color:var(--ink-soft);text-align:center}
+@media (max-width:640px){.hotels{grid-template-columns:1fr;gap:2rem}}
 
 /* ---------- Footer ---------- */
 .foot .wrap{display:flex;flex-direction:column;align-items:center;gap:.9rem}
@@ -596,11 +597,11 @@ fieldset.field{border:0;margin:0;padding:0}
       <img class="dancers rv" src="img/dancers.webp" alt="Line drawing of guests dancing and raising a toast" width="1188" height="440">
       <p class="lead rv">Guests are invited to dress in blue, green, or pink hues.</p>
       <div class="dots rv">
-          <figure class="sw" style="--c:#F7C8D3;--d:0.00s"><span class="chip"></span><figcaption>Blush</figcaption></figure>
-          <figure class="sw" style="--c:#B46A72;--d:0.12s"><span class="chip"></span><figcaption>Rosewood</figcaption></figure>
-          <figure class="sw" style="--c:#A8B58A;--d:0.24s"><span class="chip"></span><figcaption>Sage</figcaption></figure>
-          <figure class="sw" style="--c:#A9B7C6;--d:0.36s"><span class="chip"></span><figcaption>Misty sky</figcaption></figure>
-          <figure class="sw" style="--c:#2D3A47;--d:0.48s"><span class="chip"></span><figcaption>Midnight</figcaption></figure>
+          <figure class="sw" style="--d:0.00s"><img class="chip" src="img/sw-rosewood.png" alt="" width="240" height="240"><figcaption>Rosewood</figcaption></figure>
+          <figure class="sw" style="--d:0.12s"><img class="chip" src="img/sw-sage.png" alt="" width="240" height="240"><figcaption>Sage</figcaption></figure>
+          <figure class="sw" style="--d:0.24s"><img class="chip" src="img/sw-forest.png" alt="" width="240" height="240"><figcaption>Dark green</figcaption></figure>
+          <figure class="sw" style="--d:0.36s"><img class="chip" src="img/sw-misty.png" alt="" width="240" height="240"><figcaption>Misty sky</figcaption></figure>
+          <figure class="sw" style="--d:0.48s"><img class="chip" src="img/sw-midnight.png" alt="" width="240" height="240"><figcaption>Midnight</figcaption></figure>
       </div>
     </div>
   </section>
@@ -661,26 +662,19 @@ fieldset.field{border:0;margin:0;padding:0}
 
   <section class="block sage travel scallop">
     <div class="wrap">
-      <h2 class="title rv">For travelling guests</h2>
-      <div class="cols rv">
-        <div class="col">
-          <p class="hand">where to stay</p>
-          <p class="note">Two hotels right by the venue</p>
-          <ul class="places">
-          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Aman+Nai+Lert+Bangkok" target="_blank" rel="noopener"><span class="pn">Aman Nai Lert Bangkok</span><span class="pd">Set inside Nai Lert Park itself</span></a></li>
-          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Movenpick+BDMS+Wellness+Resort+Bangkok" target="_blank" rel="noopener"><span class="pn">M&ouml;venpick BDMS Wellness Resort</span><span class="pd">Right next to the park on Wireless Road</span></a></li>
-          </ul>
-        </div>
-        <div class="col">
-          <p class="hand">our favorite places</p>
-          <p class="note">A few spots we love in Bangkok</p>
-          <ul class="places">
-          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Shirokane+Tori+Tama+Bangkok" target="_blank" rel="noopener"><span class="pn">Toritama</span><span class="pd">Our go-to for Japanese yakitori</span></a></li>
-          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Yaowarat+Road+Bangkok" target="_blank" rel="noopener"><span class="pn">Chinatown</span><span class="pd">Yaowarat Road, best after dark for street food</span></a></li>
-          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Nang+Loeng+Market+Bangkok" target="_blank" rel="noopener"><span class="pn">Nang Loeng Market</span><span class="pd">One of Bangkok&rsquo;s oldest markets, come hungry</span></a></li>
-          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Banthat+Thong+Road+Bangkok" target="_blank" rel="noopener"><span class="pn">Banthat Thong Road</span><span class="pd">A long strip of street food near Chula</span></a></li>
-          </ul>
-        </div>
+      <h2 class="title rv">Where to stay</h2>
+      <p class="hand rv">two hotels right by the venue</p>
+      <div class="hotels rv">
+        <a class="hotel" href="https://www.google.com/maps/search/?api=1&amp;query=Aman+Nai+Lert+Bangkok" target="_blank" rel="noopener">
+          <img src="img/hotel-aman.jpg" alt="Pool terrace at Aman Nai Lert Bangkok, with a large tree beside the water" width="800" height="600" loading="lazy">
+          <span class="pn">Aman Nai Lert Bangkok</span>
+          <span class="pd">Set inside Nai Lert Park itself</span>
+        </a>
+        <a class="hotel" href="https://www.google.com/maps/search/?api=1&amp;query=Movenpick+BDMS+Wellness+Resort+Bangkok" target="_blank" rel="noopener">
+          <img src="img/hotel-movenpick.jpg" alt="Garden pool at M&ouml;venpick BDMS Wellness Resort Bangkok" width="800" height="600" loading="lazy">
+          <span class="pn">M&ouml;venpick BDMS Wellness Resort</span>
+          <span class="pd">Right next to the park on Wireless Road</span>
+        </a>
       </div>
     </div>
   </section>
