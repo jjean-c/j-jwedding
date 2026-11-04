@@ -407,27 +407,32 @@ fieldset.field{border:0;margin:0;padding:0}
 .hotel .pd{font-family:var(--form);font-weight:300;font-size:.85rem;color:var(--ink-soft);text-align:center}
 @media (max-width:640px){.hotels{grid-template-columns:1fr;gap:2rem}}
 
-/* ---------- Our story: zigzag photo timeline joined by a dotted line ---------- */
+/* ---------- Our story: a strip of film you swipe through, notes jotted above and below ---------- */
 .story{--bg:var(--paper);background:var(--paper)}
-.story .wrap{max-width:520px;display:flex;flex-direction:column;align-items:center;gap:1.4rem}
-.tline{list-style:none;margin:0;padding:0;position:relative;width:100%;display:flex;flex-direction:column;gap:clamp(22px,5vw,34px)}
-.tpath{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:0}
-.tpath circle{fill:var(--red);opacity:.8}
-.tpath path{fill:none;stroke:var(--red);stroke-width:1.8;stroke-linecap:round;stroke-dasharray:.1 7;opacity:.6}
-.st{position:relative;z-index:1;display:flex;align-items:center;gap:clamp(14px,4vw,24px);padding-inline:clamp(0px,6vw,48px)}
-.st-r{flex-direction:row-reverse}
-.snap{margin:0;flex:0 0 clamp(84px,26vw,128px);aspect-ratio:4/5;background:#fffdf8;padding:5px 5px 16px;
-  box-shadow:0 3px 10px rgba(45,58,71,.13);transform:rotate(var(--rot))}
-.snap .ph,.snap img{display:flex;align-items:center;justify-content:center;width:100%;height:100%;object-fit:cover}
-.snap .ph{background:radial-gradient(ellipse at 35% 30%,rgba(255,255,255,.55),transparent 60%),var(--tint);
-  font-family:var(--display);font-style:italic;color:rgba(45,58,71,.45);font-size:1rem}
-.cap{display:flex;flex-direction:column;gap:.1rem;min-width:0}
-.st-l .cap{align-items:flex-start;text-align:left}
-.st-r .cap{align-items:flex-end;text-align:right}
-.yr{font-family:var(--display);font-weight:300;font-size:clamp(1.6rem,6vw,2.1rem);line-height:1;color:var(--steel);font-variant-numeric:lining-nums}
-.what{font-family:var(--hand);font-style:italic;font-size:clamp(1.05rem,3.8vw,1.25rem);color:var(--red)}
-.st::after{content:"";position:absolute;width:11px;height:11px;border-radius:50%;background:var(--red);opacity:.85;
-  left:var(--dx);top:50%;transform:translate(-50%,-50%);display:none}
+.story .wrap{display:flex;flex-direction:column;align-items:center;gap:.2rem}
+.swipe{font-family:var(--hand);font-style:italic;font-size:1.1rem;color:var(--red);opacity:.8}
+.reel{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none;padding:6px max(16px,env(safe-area-inset-left,0px)) 10px;margin-top:1.2rem;
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent)}
+.reel::-webkit-scrollbar{display:none}
+.reel:focus-visible{outline:2px solid var(--steel);outline-offset:4px}
+.film{list-style:none;margin:0 auto;padding:0 6vw;display:flex;width:max-content}
+.fr{--cw:clamp(104px,30vw,140px);display:grid;grid-template-rows:76px auto 76px;scroll-snap-align:center}
+.fr .note{margin:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:0 4px 10px;transform:rotate(var(--tilt))}
+.fr.dn .note{grid-row:3;justify-content:flex-start;padding:10px 4px 0}
+.fr .cell{grid-row:2;position:relative;width:calc(var(--cw) + 18px);padding:22px 9px;
+  background:
+    radial-gradient(circle at 50% 50%,var(--paper) 0 3.2px,transparent 3.7px) 0 6px/14px 14px repeat-x,
+    radial-gradient(circle at 50% 50%,var(--paper) 0 3.2px,transparent 3.7px) 0 calc(100% - 6px)/14px 14px repeat-x,
+    #4A3A3A}
+.fr .ph{display:block;width:var(--cw);aspect-ratio:4/5;background:radial-gradient(ellipse at 35% 30%,rgba(255,255,255,.5),transparent 62%),var(--tint)}
+.fr .cell img{display:block;width:var(--cw);aspect-ratio:4/5;object-fit:cover}
+.fr:first-child .cell{border-radius:6px 0 0 6px}
+.fr:last-child .cell{border-radius:0 6px 6px 0}
+.fr .yr{font-family:var(--display);font-weight:400;font-size:1.35rem;line-height:1;color:var(--steel);font-variant-numeric:lining-nums}
+.fr .what{font-family:var(--hand);font-style:italic;font-size:1.1rem;line-height:1.15;color:var(--red);max-width:9em}
+.fr.dn .note{flex-direction:column-reverse}
+.fr.dn .note .yr{margin-top:.15rem}
 
 /* ---------- Footer ---------- */
 .foot .wrap{display:flex;flex-direction:column;align-items:center;gap:.9rem}
@@ -704,44 +709,46 @@ fieldset.field{border:0;margin:0;padding:0}
   <section class="block story scallop">
     <div class="wrap">
       <h2 class="title rv">Our story</h2>
-      <ol class="tline" id="tline">
-        <svg class="tpath" aria-hidden="true"><path id="tpath"/><g id="tdots"></g></svg>
-        <li class="st st-l rv">
-          <figure class="snap" style="--rot:-2.5deg;--tint:#E9C9CF"><span class="ph"></span></figure>
-          <div class="cap"><span class="yr">2021</span><span class="what">first date</span></div>
-        </li>
-        <li class="st st-r rv">
-          <figure class="snap" style="--rot:2deg;--tint:#D9E2CB"><span class="ph"></span></figure>
-          <div class="cap"><span class="yr">2022</span><span class="what">more dates</span></div>
-        </li>
-        <li class="st st-l rv">
-          <figure class="snap" style="--rot:-1.5deg;--tint:#CFDCE5"><span class="ph"></span></figure>
-          <div class="cap"><span class="yr">2023</span><span class="what">let&rsquo;s travel</span></div>
-        </li>
-        <li class="st st-r rv">
-          <figure class="snap" style="--rot:2.5deg;--tint:#E9D6C8"><span class="ph"></span></figure>
-          <div class="cap"><span class="yr">2023</span><span class="what">but also LDR</span></div>
-        </li>
-        <li class="st st-l rv">
-          <figure class="snap" style="--rot:-2deg;--tint:#D4DDD2"><span class="ph"></span></figure>
-          <div class="cap"><span class="yr">2024</span><span class="what">first Disney trip</span></div>
-        </li>
-        <li class="st st-r rv">
-          <figure class="snap" style="--rot:1.5deg;--tint:#D6DCE8"><span class="ph"></span></figure>
-          <div class="cap"><span class="yr">2025</span><span class="what">Boston</span></div>
-        </li>
-        <li class="st st-l rv">
-          <figure class="snap" style="--rot:-1deg;--tint:#EFE3D3"><span class="ph"></span></figure>
-          <div class="cap"><span class="yr">2025</span><span class="what">proposed</span></div>
-        </li>
-        <li class="st st-r rv">
-          <figure class="snap" style="--rot:2deg;--tint:#E3D3DC"><span class="ph"></span></figure>
-          <div class="cap"><span class="yr">2026</span><span class="what">San Francisco</span></div>
-        </li>
-        <li class="st st-l rv">
-          <figure class="snap" style="--rot:-1.5deg;--tint:#E8E0CF"><span class="ph"></span></figure>
-          <div class="cap"><span class="yr">2027</span><span class="what">married</span></div>
-        </li>
+      <p class="swipe rv" aria-hidden="true">swipe &rarr;</p>
+    </div>
+    <div class="reel rv" tabindex="0" aria-label="Our story, 2021 to 2027">
+      <ol class="film">
+          <li class="fr up" style="--tint:#E9C9CF;--tilt:-3deg">
+            <p class="note"><span class="yr">2021</span><span class="what">first date</span></p>
+            <div class="cell"><span class="ph"></span></div>
+          </li>
+          <li class="fr dn" style="--tint:#D9E2CB;--tilt:2deg">
+            <p class="note"><span class="yr">2022</span><span class="what">more dates</span></p>
+            <div class="cell"><span class="ph"></span></div>
+          </li>
+          <li class="fr up" style="--tint:#CFDCE5;--tilt:-2deg">
+            <p class="note"><span class="yr">2023</span><span class="what">let&rsquo;s travel</span></p>
+            <div class="cell"><span class="ph"></span></div>
+          </li>
+          <li class="fr dn" style="--tint:#E9D6C8;--tilt:3deg">
+            <p class="note"><span class="yr">2023</span><span class="what">but also LDR</span></p>
+            <div class="cell"><span class="ph"></span></div>
+          </li>
+          <li class="fr up" style="--tint:#D4DDD2;--tilt:-1.5deg">
+            <p class="note"><span class="yr">2024</span><span class="what">first Disney trip</span></p>
+            <div class="cell"><span class="ph"></span></div>
+          </li>
+          <li class="fr dn" style="--tint:#D6DCE8;--tilt:2.5deg">
+            <p class="note"><span class="yr">2025</span><span class="what">Boston</span></p>
+            <div class="cell"><span class="ph"></span></div>
+          </li>
+          <li class="fr up" style="--tint:#EFE3D3;--tilt:-2.5deg">
+            <p class="note"><span class="yr">2025</span><span class="what">proposed</span></p>
+            <div class="cell"><span class="ph"></span></div>
+          </li>
+          <li class="fr dn" style="--tint:#E3D3DC;--tilt:1.5deg">
+            <p class="note"><span class="yr">2026</span><span class="what">San Francisco</span></p>
+            <div class="cell"><span class="ph"></span></div>
+          </li>
+          <li class="fr up" style="--tint:#E8E0CF;--tilt:-2deg">
+            <p class="note"><span class="yr">2027</span><span class="what">married</span></p>
+            <div class="cell"><span class="ph"></span></div>
+          </li>
       </ol>
     </div>
   </section>
@@ -811,27 +818,6 @@ fieldset.field{border:0;margin:0;padding:0}
     },{rootMargin:'0px 0px -8% 0px',threshold:.12});
     rv.forEach(function(el){io.observe(el);});
   } else {rv.forEach(function(el){el.classList.add('in');});}
-
-  /* Our story: draw a soft dotted line that wanders from photo to photo. */
-  var tl=document.getElementById('tline'),tp=document.getElementById('tpath');
-  function drawPath(){
-    if(!tl||!tp) return;
-    var box=tl.getBoundingClientRect(),fr=[].map.call(tl.querySelectorAll('.snap'),function(f){
-      var r=f.getBoundingClientRect();
-      return {x:r.left-box.left+r.width/2, top:r.top-box.top-4, bot:r.bottom-box.top+4};
-    });
-    if(fr.length<2) return;
-    var d='',dots='';
-    for(var i=1;i<fr.length;i++){
-      var a=fr[i-1],b=fr[i],my=(a.bot+b.top)/2;
-      d+='M'+a.x+','+a.bot+' C'+a.x+','+(my+10)+' '+b.x+','+(my-10)+' '+b.x+','+b.top+' ';
-      dots+='<circle cx="'+a.x+'" cy="'+a.bot+'" r="2.6"/><circle cx="'+b.x+'" cy="'+b.top+'" r="2.6"/>';
-    }
-    document.getElementById('tdots').innerHTML=dots;
-    tp.setAttribute('d',d);
-  }
-  drawPath(); window.addEventListener('resize',drawPath);
-  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(drawPath);
 
   /* Countdown to 6:00 pm Bangkok time (UTC+7), 27 June 2027. */
   var target=Date.UTC(2027,5,27,11,0,0);
