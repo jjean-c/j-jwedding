@@ -283,12 +283,15 @@ h2.title{
 .dress .wrap{display:flex;flex-direction:column;align-items:center;gap:1.8rem}
 .dancers{width:100%;max-width:560px;height:auto}
 .dress .lead{max-width:24ch}
-.dots{display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem 1rem}
-.dot{width:clamp(48px,13vw,68px);height:auto;overflow:visible}
+.dots{display:flex;justify-content:center;gap:clamp(.4rem,2.5vw,1.6rem);width:100%;max-width:440px}
+.sw{margin:0;flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:.55rem}
+.chip{width:clamp(36px,10vw,52px);aspect-ratio:1;border-radius:50%;background:var(--c);
+  box-shadow:0 0 0 4px var(--bg),0 0 0 5px rgba(45,58,71,.18)}
+.sw figcaption{font-family:var(--display);font-style:italic;font-size:clamp(.85rem,3.4vw,1rem);white-space:nowrap;color:var(--ink-soft)}
 @media (prefers-reduced-motion:no-preference){
-  .dots.in .dot{animation:dotIn .8s cubic-bezier(.34,1.5,.5,1) both;animation-delay:var(--d)}
+  .dots.in .sw{animation:dotIn .7s ease both;animation-delay:var(--d)}
 }
-@keyframes dotIn{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}
+@keyframes dotIn{from{transform:translateY(6px);opacity:0}to{transform:none;opacity:1}}
 
 /* ---------- Countdown + RSVP (one painted section) ---------- */
 .wrap.count{display:flex;flex-direction:column;align-items:center;gap:.6rem}
@@ -448,11 +451,6 @@ fieldset.field{border:0;margin:0;padding:0}
       <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="2" seed="5" result="n"/>
       <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G"/>
     </filter>
-    <filter id="wc0" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="13" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation=".7"/></filter>
-    <filter id="wc1" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="13" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation=".7"/></filter>
-    <filter id="wc2" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="16" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="13" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation=".7"/></filter>
-    <filter id="wc3" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="23" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="13" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation=".7"/></filter>
-    <filter id="wc4" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="30" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="13" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation=".7"/></filter>
     <symbol id="d-sparkle" viewBox="0 0 48 48"><path d="M24 3C25.5 15 33 22.5 45 24C33 25.5 25.5 33 24 45C22.5 33 15 25.5 3 24C15 22.5 22.5 15 24 3Z"/></symbol>
     <symbol id="d-burst" viewBox="0 0 48 48"><path d="M24 17V5M29 19L37 10M31 24H43M29 29L36 36M24 31V42M19 29L11 37M17 24H5M19 19L12 12"/></symbol>
     <symbol id="d-heart" viewBox="0 0 48 48"><path class="f" d="M24.0,40.6 C17.7,35.1 5.9,27.5 7.2,19.0 C7.5,10.0 20.4,8.5 24.4,16.8 C28.4,8.1 40.4,10.5 40.8,18.6 C41.8,27.8 30.4,34.2 24.0,40.6Z"/></symbol>
@@ -598,11 +596,11 @@ fieldset.field{border:0;margin:0;padding:0}
       <img class="dancers rv" src="img/dancers.webp" alt="Line drawing of guests dancing and raising a toast" width="1188" height="440">
       <p class="lead rv">Guests are invited to dress in blue, green, or pink hues.</p>
       <div class="dots rv">
-          <svg class="dot" viewBox="0 0 100 100" role="img" aria-label="Blush Petal" style="--d:0.0s"><g filter="url(#wc0)"><circle cx="50" cy="50" r="36" fill="#F7C8D3" fill-opacity=".72"/><circle cx="46" cy="47" r="22" fill="#F7C8D3" fill-opacity=".35"/><circle cx="50" cy="50" r="36" fill="none" stroke="#F7C8D3" stroke-width="3.5" stroke-opacity=".55"/></g></svg>
-          <svg class="dot" viewBox="0 0 100 100" role="img" aria-label="Rosewood" style="--d:0.4s"><g filter="url(#wc1)"><circle cx="50" cy="50" r="36" fill="#B46A72" fill-opacity=".72"/><circle cx="46" cy="47" r="22" fill="#B46A72" fill-opacity=".35"/><circle cx="50" cy="50" r="36" fill="none" stroke="#B46A72" stroke-width="3.5" stroke-opacity=".55"/></g></svg>
-          <svg class="dot" viewBox="0 0 100 100" role="img" aria-label="Sage Leaf" style="--d:0.8s"><g filter="url(#wc2)"><circle cx="50" cy="50" r="36" fill="#A8B58A" fill-opacity=".72"/><circle cx="46" cy="47" r="22" fill="#A8B58A" fill-opacity=".35"/><circle cx="50" cy="50" r="36" fill="none" stroke="#A8B58A" stroke-width="3.5" stroke-opacity=".55"/></g></svg>
-          <svg class="dot" viewBox="0 0 100 100" role="img" aria-label="Misty Sky" style="--d:1.2000000000000002s"><g filter="url(#wc3)"><circle cx="50" cy="50" r="36" fill="#A9B7C6" fill-opacity=".72"/><circle cx="46" cy="47" r="22" fill="#A9B7C6" fill-opacity=".35"/><circle cx="50" cy="50" r="36" fill="none" stroke="#A9B7C6" stroke-width="3.5" stroke-opacity=".55"/></g></svg>
-          <svg class="dot" viewBox="0 0 100 100" role="img" aria-label="Midnight Lagoon" style="--d:1.6s"><g filter="url(#wc4)"><circle cx="50" cy="50" r="36" fill="#2D3A47" fill-opacity=".72"/><circle cx="46" cy="47" r="22" fill="#2D3A47" fill-opacity=".35"/><circle cx="50" cy="50" r="36" fill="none" stroke="#2D3A47" stroke-width="3.5" stroke-opacity=".55"/></g></svg>
+          <figure class="sw" style="--c:#F7C8D3;--d:0.00s"><span class="chip"></span><figcaption>Blush</figcaption></figure>
+          <figure class="sw" style="--c:#B46A72;--d:0.12s"><span class="chip"></span><figcaption>Rosewood</figcaption></figure>
+          <figure class="sw" style="--c:#A8B58A;--d:0.24s"><span class="chip"></span><figcaption>Sage</figcaption></figure>
+          <figure class="sw" style="--c:#A9B7C6;--d:0.36s"><span class="chip"></span><figcaption>Misty sky</figcaption></figure>
+          <figure class="sw" style="--c:#2D3A47;--d:0.48s"><span class="chip"></span><figcaption>Midnight</figcaption></figure>
       </div>
     </div>
   </section>
