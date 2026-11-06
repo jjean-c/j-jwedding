@@ -371,17 +371,19 @@ fieldset.field{border:0;margin:0;padding:0}
 @keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
 
 /* ---------- Watercolor pieces: ribbon frame, monogram, wildflower edges, butterflies ---------- */
-.ribbon{position:relative;width:min(100%,480px);aspect-ratio:800/600;
-  background:url(img/ribbon4.webp) center/contain no-repeat;
+.ribbon{position:relative;width:min(100%,480px);aspect-ratio:800/722;
+  background:url(img/ribbon3.webp) center/contain no-repeat;
   /* Padding matches the open space inside the ribbon: below the bow, inside the sides and bottom. */
   display:block;padding:0}
-.ribbon .invite__text{gap:0;text-align:center;position:absolute;top:36%;left:8%;right:8%}
+.ribbon .invite__text{gap:0;text-align:center;position:absolute;top:29%;left:8%;right:8%}
+@media (max-width:420px){.ribbon .invite__text{top:26%}}
 .ribbon .invite__text::before{content:"";position:absolute;inset:-14% -8%;z-index:-1;background:radial-gradient(ellipse at center,rgba(255,250,240,.75),rgba(255,250,240,0) 70%)}
 .ribbon .hand{font-size:clamp(1.2rem,4.3vw,1.6rem);line-height:1.25;font-weight:500;color:#963F4B;text-wrap:balance;max-width:none;margin:0 auto}
 .ribbon .lead{font-size:clamp(1.5rem,5.8vw,2.15rem);font-weight:500;color:var(--ink);line-height:1.15;max-width:none;white-space:nowrap;margin:.5em auto 0}
 .bigdate{display:flex;flex-direction:column;align-items:center;gap:.2rem;margin-top:.6rem;text-align:center}
 .bigdate .bd-day{font-family:var(--caps);font-weight:500;font-size:clamp(.9rem,3.2vw,1.05rem);letter-spacing:.3em;text-transform:uppercase;color:var(--ink)}
 .bigdate .bd-date{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,8.5vw,3.4rem);line-height:1.05;color:var(--ink);font-variant-numeric:lining-nums}
+.ribbon .rloc{font-family:var(--display);font-style:italic;font-size:clamp(1rem,3.4vw,1.2rem);color:var(--ink-soft);margin-top:.2em}
 .ribbon .rdate{font-family:var(--caps);font-weight:500;color:var(--ink);font-variant-numeric:lining-nums;font-size:clamp(.95rem,3.4vw,1.15rem);letter-spacing:.2em;text-transform:uppercase;margin-top:1.3em;padding-top:1em;position:relative}
 .ribbon .rdate::before{content:"";position:absolute;top:0;left:50%;width:32px;height:1px;background:currentColor;opacity:.45;transform:translateX(-50%)}
 .mono{display:flex;align-items:flex-end;justify-content:center;gap:.1rem;margin-bottom:.2rem}
@@ -579,10 +581,11 @@ fieldset.field{border:0;margin:0;padding:0}
       <div class="ribbon rv">
         <div class="invite__text">
           <p class="hand">to the people who made us who we are</p>
-          <h2 class="lead">we&rsquo;d love to have you<br>at our wedding</h2>
+          <h2 class="lead">we&rsquo;d love to celebrate<br>our wedding with you</h2>
+          <p class="rdate">Sunday 27 June 2027</p>
+          <p class="rloc">at Park Nai Lert, Bangkok</p>
         </div>
       </div>
-      <p class="bigdate rv"><span class="bd-day">Sunday</span><span class="bd-date">27 June 2027</span></p>
     </div>
   </section>
 
@@ -655,8 +658,6 @@ fieldset.field{border:0;margin:0;padding:0}
         <p>Bangkok, Thailand</p>
         <div class="actions">
           <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Park+Nai+Lert+Bangkok" target="_blank" rel="noopener"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#d-pin"/></svg>open in maps</a>
-          <!-- End time is a placeholder (10:00 pm). Confirm with the venue. -->
-          <a class="btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Wedding+Reception&amp;dates=20270627T180000/20270627T220000&amp;ctz=Asia/Bangkok&amp;location=Park+Nai+Lert%2C+Bangkok&amp;details=Doors+open+18%3A00.+Dinner+18%3A30.+Cake+cutting+20%3A00.+After+party+21%3A00." target="_blank" rel="noopener"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#d-cal"/></svg>add to calendar</a>
         </div>
       </div>
     </div>
@@ -792,7 +793,6 @@ fieldset.field{border:0;margin:0;padding:0}
             <span class="pcap"><span class="yr">2025</span><span class="what">engaged</span></span>
           </li>
           <li class="pol" style="--rot:3deg;--tint:#E3D3DC">
-            <svg class="pdd" style="bottom:58px;right:-22px;width:44px;transform:rotate(-6deg)" viewBox="0 0 48 48" aria-hidden="true"><use href="#d-seal"/></svg>
             <span class="win"><img src="img/recap-7.jpg" alt="On a sunny street corner in Sausalito" width="600" height="600" loading="lazy"></span>
             <span class="pcap"><span class="yr">2026</span><span class="what">San Francisco</span></span>
           </li>
