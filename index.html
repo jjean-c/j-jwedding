@@ -289,12 +289,14 @@ h2.title{
 
 /* ---------- Dress code (blush block) ---------- */
 .blush{--bg:#EADCDD;background:#EADCDD}
-.dress .wrap{display:flex;flex-direction:column;align-items:center;gap:1.8rem}
-.dancers{width:100%;max-width:560px;height:auto}
-.dress .lead{max-width:24ch}
+.dress .wrap{display:flex;flex-direction:column;align-items:center;gap:.9rem}
+.block.dress{padding-top:clamp(40px,7vw,64px);padding-bottom:clamp(48px,8vw,72px)}
+.dress .title{font-size:clamp(1.8rem,6vw,2.5rem);margin-top:.4rem}
+.dancers{width:100%;max-width:400px;height:auto}
+.dress .lead{max-width:24ch;font-size:clamp(1.15rem,4vw,1.45rem)}
 .dots{display:flex;justify-content:center;gap:clamp(.4rem,2.5vw,1.6rem);width:100%;max-width:440px}
 .sw{margin:0;flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:.55rem}
-.chip{width:clamp(48px,13vw,68px);height:auto;display:block}
+.chip{width:clamp(40px,11vw,54px);height:auto;display:block}
 .sw figcaption{font-family:var(--display);font-style:italic;font-size:clamp(.85rem,3.4vw,1rem);white-space:nowrap;color:var(--ink-soft)}
 @media (prefers-reduced-motion:no-preference){
   .dots.in .sw{animation:dotIn .7s ease both;animation-delay:var(--d)}
@@ -629,9 +631,9 @@ fieldset.field{border:0;margin:0;padding:0}
 
   <section class="block blush dress scallop">
     <div class="wrap">
-      <h2 class="title rv">Dress code</h2>
       <img class="dancers rv" src="img/dancers.webp" alt="Line drawing of guests dancing and raising a toast" width="1188" height="440">
-      <p class="lead rv">Guests are invited to dress in blue, green, or pink hues.</p>
+      <h2 class="title rv">Dress code</h2>
+      <p class="lead rv">Guests are invited to dress in evening attire</p>
       <div class="dots rv">
           <figure class="sw" style="--d:0.00s"><img class="chip" src="img/sw-rosewood.png" alt="" width="240" height="240"><figcaption>Rosewood</figcaption></figure>
           <figure class="sw" style="--d:0.12s"><img class="chip" src="img/sw-sage.png" alt="" width="240" height="240"><figcaption>Sage</figcaption></figure>
