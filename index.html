@@ -231,9 +231,17 @@ h2.title{
 
 /* ---------- Evening + location (oat block) ---------- */
 .schedule .wrap{display:flex;flex-direction:column;align-items:center;gap:2.4rem}
-.tl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;width:100%}
+.tl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem;width:100%}
+@media (max-width:560px){.tl{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:1.8rem}}
+.flame{transform-box:fill-box;transform-origin:50% 100%}
+.ck-heart{transform-box:fill-box;transform-origin:center}
+@media (prefers-reduced-motion:no-preference){
+  .tl__item:hover .flame{animation:flick .5s ease-in-out infinite alternate}
+  .tl__item:hover .ck-heart{animation:beat 1.1s ease-in-out infinite}
+}
+@keyframes flick{from{transform:scale(1,1) rotate(-4deg)}to{transform:scale(.85,1.2) rotate(4deg)}}
 .tl__item{display:flex;flex-direction:column;align-items:center;gap:.3rem}
-.tl__item svg{width:clamp(66px,20vw,108px);height:auto;margin-bottom:.4rem}
+.tl__item svg{width:clamp(66px,20vw,96px);height:auto;margin-bottom:.4rem}
 /* Agenda icons: a slow float and a soft sparkle twinkle. Starts once the row scrolls in; off for reduced motion. */
 @media (prefers-reduced-motion:no-preference){
   .tl.in .tl__item svg{animation:bob 5s ease-in-out infinite}
@@ -367,10 +375,11 @@ fieldset.field{border:0;margin:0;padding:0}
   background:url(img/ribbon3.webp) center/contain no-repeat;
   /* Padding matches the open space inside the ribbon: below the bow, inside the sides and bottom. */
   display:flex;align-items:center;justify-content:center;padding:21% 14% 9%}
-.ribbon .invite__text{gap:0;width:100%;text-align:center}
-.ribbon .hand{font-size:clamp(1.05rem,3.7vw,1.4rem);line-height:1.25;text-wrap:balance;max-width:14em;margin:0 auto}
-.ribbon .lead{font-size:clamp(1.4rem,5.4vw,2rem);line-height:1.15;text-wrap:balance;max-width:11em;margin:.45em auto 0}
-.ribbon .rdate{font-family:var(--caps);font-weight:500;font-variant-numeric:lining-nums;font-size:clamp(.8rem,2.9vw,.98rem);letter-spacing:.24em;text-transform:uppercase;margin-top:1.3em;padding-top:1em;position:relative}
+.ribbon .invite__text{gap:0;width:100%;text-align:center;position:relative}
+.ribbon .invite__text::before{content:"";position:absolute;inset:-14% -8%;z-index:-1;background:radial-gradient(ellipse at center,rgba(255,250,240,.75),rgba(255,250,240,0) 70%)}
+.ribbon .hand{font-size:clamp(1.2rem,4.3vw,1.6rem);line-height:1.25;font-weight:500;color:#963F4B;text-wrap:balance;max-width:13em;margin:0 auto}
+.ribbon .lead{font-size:clamp(1.5rem,5.8vw,2.15rem);font-weight:500;color:var(--ink);line-height:1.15;text-wrap:balance;max-width:11em;margin:.5em auto 0}
+.ribbon .rdate{font-family:var(--caps);font-weight:500;color:var(--ink);font-variant-numeric:lining-nums;font-size:clamp(.95rem,3.4vw,1.15rem);letter-spacing:.2em;text-transform:uppercase;margin-top:1.3em;padding-top:1em;position:relative}
 .ribbon .rdate::before{content:"";position:absolute;top:0;left:50%;width:32px;height:1px;background:currentColor;opacity:.45;transform:translateX(-50%)}
 .mono{display:flex;align-items:flex-end;justify-content:center;gap:.1rem;margin-bottom:.2rem}
 .mono img{width:clamp(64px,17vw,84px);height:auto}
@@ -589,7 +598,7 @@ fieldset.field{border:0;margin:0;padding:0}
             <use href="#d-sparkle" x="56" y="2" width="20" height="20"/>
             <use href="#d-heart" x="4" y="12" width="14" height="14"/>
           </svg>
-          <span class="time">6:00 pm</span><span class="what">Doors open</span>
+          <span class="time">18:00</span><span class="what">Doors open</span>
         </div>
         <div class="tl__item">
           <svg class="ico" viewBox="0 0 80 80" aria-hidden="true">
@@ -600,7 +609,22 @@ fieldset.field{border:0;margin:0;padding:0}
             <use class="dn-burst" href="#d-burst" x="30" y="2" width="20" height="20"/>
             <g class="dn-steam" style="stroke-width:2.2"><path d="M33 20C30 16 36 12 33 8"/><path d="M40 20C37 16 43 12 40 8"/><path d="M47 20C44 16 50 12 47 8"/></g>
           </svg>
-          <span class="time">6:30 pm</span><span class="what">Dinner</span>
+          <span class="time">18:30</span><span class="what">Dinner</span>
+        </div>
+        <div class="tl__item">
+          <svg class="ico" viewBox="0 0 80 80" aria-hidden="true">
+            <path d="M12 70H68"/>
+            <path d="M18 70V50H62V70"/>
+            <path d="M18 56C24 60 28 52 34 56C40 60 44 52 50 56C56 60 60 52 62 56"/>
+            <path d="M27 50V36H53V50"/>
+            <path d="M27 41C32 44 36 38 40 41C44 44 48 38 53 41"/>
+            <path d="M40 36V26"/>
+            <path class="flame" d="M40 25C36 21 38 16 40 12C42 16 44 21 40 25Z" style="fill:#F2C6A8"/>
+            <use class="ck-heart" href="#d-heart" x="35" y="56" width="10" height="10"/>
+            <use href="#d-sparkle" x="58" y="10" width="16" height="16"/>
+            <use href="#d-heart" x="6" y="22" width="12" height="12"/>
+          </svg>
+          <span class="time">20:00</span><span class="what">Cake cutting</span>
         </div>
         <div class="tl__item">
           <svg class="ico" viewBox="0 0 80 80" aria-hidden="true">
@@ -613,7 +637,7 @@ fieldset.field{border:0;margin:0;padding:0}
             <use class="ap-burst" href="#d-burst" x="26" y="0" width="28" height="28"/>
             <use href="#d-sparkle" x="62" y="6" width="14" height="14"/>
           </svg>
-          <span class="time">8:30 pm</span><span class="what">After party</span>
+          <span class="time">21:00</span><span class="what">After party</span>
         </div>
       </div>
       <div class="place rv">
@@ -623,7 +647,7 @@ fieldset.field{border:0;margin:0;padding:0}
         <div class="actions">
           <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Park+Nai+Lert+Bangkok" target="_blank" rel="noopener"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#d-pin"/></svg>open in maps</a>
           <!-- End time is a placeholder (10:00 pm). Confirm with the venue. -->
-          <a class="btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Wedding+Reception&amp;dates=20270627T180000/20270627T220000&amp;ctz=Asia/Bangkok&amp;location=Park+Nai+Lert%2C+Bangkok&amp;details=Doors+open+6%3A00+pm.+Dinner+6%3A30+pm.+After+party+8%3A30+pm." target="_blank" rel="noopener"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#d-cal"/></svg>add to calendar</a>
+          <a class="btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Wedding+Reception&amp;dates=20270627T180000/20270627T220000&amp;ctz=Asia/Bangkok&amp;location=Park+Nai+Lert%2C+Bangkok&amp;details=Doors+open+18%3A00.+Dinner+18%3A30.+Cake+cutting+20%3A00.+After+party+21%3A00." target="_blank" rel="noopener"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#d-cal"/></svg>add to calendar</a>
         </div>
       </div>
     </div>
