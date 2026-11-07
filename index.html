@@ -356,7 +356,9 @@ fieldset.field{border:0;margin:0;padding:0}
   border:1px solid var(--line);border-radius:4px;cursor:pointer;
   font-family:var(--form);font-weight:300;font-size:.95rem;line-height:1.15;transition:background .25s,color .25s,border-color .25s;
 }
-.choice input:checked + span{background:var(--steel);border-color:var(--steel);color:#fff}
+.choice input:checked + span{background:#A65E7A;border-color:#A65E7A;color:#fff}
+.pq{padding:0;line-height:1.5;font-family:var(--form);font-weight:400;font-size:.88rem;color:var(--ink)}
+.field > label.sub-l{margin-top:.9rem;color:var(--ink-soft);font-size:.82rem}
 .choice input:focus-visible + span{outline:2px solid var(--ink);outline-offset:3px}
 .status{min-height:1.4em;font-family:var(--form);font-weight:300;font-size:.85rem;color:var(--ink-soft);text-align:center}
 .status.err{color:#9B2D3F}
@@ -727,7 +729,12 @@ fieldset.field{border:0;margin:0;padding:0}
           <input class="input" id="email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="160" required>
         </div>
         <div class="field">
-          <label for="plusone">Are you bringing a plus one?<br>If yes, please let us know their full name and nickname here</label>
+          <span class="pq">Are you bringing a plus one?</span>
+          <div class="choice">
+            <label><input type="radio" name="plusone_yn" value="Yes"><span>Yes!</span></label>
+            <label><input type="radio" name="plusone_yn" value="No"><span>No</span></label>
+          </div>
+          <label for="plusone" class="sub-l">If yes, please let us know their full name and nickname</label>
           <input class="input" id="plusone" name="plusone" type="text" maxlength="120">
         </div>
         <div class="field">
@@ -916,10 +923,12 @@ fieldset.field{border:0;margin:0;padding:0}
     if(!name) return say('Please add your full name.',true);
     if(!rec) return say('Please tell us if you can join the reception.',true);
     if(!ap) return say('Please tell us about the after party.',true);
+    var po=el.plusone_yn.value;
+    if(!po) return say('Please tell us if you\u2019re bringing a plus one.',true);
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return say('Please add a valid email.',true);
     var done=(rec==='Yes'?'Thank you, '+name+'. We can\u2019t wait to see you!':'Thank you, '+name+'. We will miss you.');
     if(!SCRIPT_URL){say(done+' (Preview only, nothing was saved.)');return;}
-    var body=new URLSearchParams({name:name,nickname:el.nickname.value.trim(),reception:rec,afterparty:ap,email:email,
+    var body=new URLSearchParams({name:name,nickname:el.nickname.value.trim(),reception:rec,afterparty:ap,email:email,plusone_yn:po,
       plusone:el.plusone.value.trim(),diet:el.diet.value.trim(),note:el.note.value.trim(),hp:el.hp_trap_9.value});
     send.disabled=true; say('Sending\u2026');
     fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:body})
