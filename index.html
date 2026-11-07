@@ -350,6 +350,7 @@ fieldset.field{border:0;margin:0;padding:0}
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%235A6675' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") right .2rem center no-repeat}
 .choice{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem;margin-top:.3rem}
 .choice label{display:block;min-width:0}
+.choice.three{grid-template-columns:repeat(3,minmax(0,1fr))}
 .choice input{position:absolute;opacity:0;pointer-events:none}
 .choice span{
   display:flex;align-items:center;justify-content:center;text-align:center;min-height:52px;padding:.5rem .8rem;
@@ -730,8 +731,9 @@ fieldset.field{border:0;margin:0;padding:0}
         </div>
         <div class="field">
           <span class="pq">Are you bringing a plus one?</span>
-          <div class="choice">
+          <div class="choice three">
             <label><input type="radio" name="plusone_yn" value="Yes"><span>Yes!</span></label>
+            <label><input type="radio" name="plusone_yn" value="Maybe"><span>Maybe</span></label>
             <label><input type="radio" name="plusone_yn" value="No"><span>No</span></label>
           </div>
           <label for="plusone" class="sub-l">If yes, please let us know their full name and nickname</label>
