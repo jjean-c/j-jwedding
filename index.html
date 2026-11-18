@@ -362,6 +362,7 @@ fieldset.field{border:0;margin:0;padding:0}
   font-family:var(--form);font-weight:300;font-size:.95rem;line-height:1.15;transition:background .25s,color .25s,border-color .25s;
 }
 .choice input:checked + span{background:#A65E7A;border-color:#A65E7A;color:#fff}
+.lv{font-family:var(--hand);font-style:italic;font-size:1.05rem;color:var(--red);margin-left:.2rem}
 .pq{padding:0;line-height:1.5;font-family:var(--form);font-weight:400;font-size:.88rem;color:var(--ink)}
 .field > label.sub-l{margin-top:.9rem;color:var(--ink-soft);font-size:.82rem}
 .choice input:focus-visible + span{outline:2px solid var(--ink);outline-offset:3px}
@@ -757,7 +758,7 @@ fieldset.field{border:0;margin:0;padding:0}
           <input class="input" id="diet" name="diet" type="text" maxlength="300">
         </div>
         <div class="field">
-          <label for="note">A note for us</label>
+          <label for="note">A note for us <span class="lv">(we love you too!)</span></label>
           <textarea class="textarea" id="note" name="note" rows="2" maxlength="1000"></textarea>
         </div>
         <!-- Spam trap: hidden from people, bots fill it in. -->
